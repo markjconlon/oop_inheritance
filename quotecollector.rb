@@ -11,13 +11,21 @@ class QuoteCollector < Multilinguist
   end
 
   def collect(quote, author = "unknown", topic = :any)
-    @collection << {quote: quote.to_s, author: author, topic: topic}
-    quote
+    @collection << {quote: quote, author: author, topic: topic}
+  end
+
+  def give_random()
+    random_index = rand(@collection.length)
+    say_in_local_language("A wise person once said: #{@collection[random_index][:quote]}")
   end
 
 end
 
 me = QuoteCollector.new
 me.collect("With great power there must also come... great responsibility!", "Stan Lee", :life)
-me.collect("If we don't blow ourselves up, the future will be wonderful.", "Stan Lee", :life)
-@collection.inspect
+me.collect("If we do not blow ourselves up, the future will be wonderful.", "Stan Lee", :life)
+puts me.give_random
+me.travel_to("France")
+puts me.give_random
+me.travel_to("India")
+puts me.give_random
