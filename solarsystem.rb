@@ -26,8 +26,6 @@ class Body < System
     @name = name.to_s
     @mass = mass.to_f
   end
-
-
 end
 
 class Planet < Body
@@ -41,6 +39,8 @@ class Planet < Body
     @moons = []
   end
 end
+
+
 
 class Star < Body
 
@@ -74,3 +74,5 @@ moon = Moon.new("TheMoon", 0.012, 27.3, earth)
 solar_system.add(moon)
 sun = Star.new("Sun", 10100, "g")
 solar_system.add(sun)
+puts solar_system.bodies
+puts solar_system.total_mass
