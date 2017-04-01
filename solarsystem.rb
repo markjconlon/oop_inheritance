@@ -6,7 +6,6 @@ class System
     @bodies = []
   end
 
-  #going to pass it an array of length 2, index 0 for body and index 1 for mass
   def add(body)
     @bodies << body
   end
@@ -14,9 +13,9 @@ class System
   def total_mass
     sum = 0
     @bodies.each do |body|
-      sum += @bodies[body][1]
-      return sum
+      sum += body.mass
     end
+    sum
   end
 end
 
@@ -31,15 +30,41 @@ class Body < System
 
 end
 
-class Planet < body
+class Planet < Body
 
-  def
+  attr_accessor :moons
+  #displayed in earth days
+  def initialize(name, mass, day, year)
+    super(name, mass)
+    @day = day
+    @year = year
+    @moons = []
+  end
 end
 
-class Star
+class Star < Body
+
+  def initialize(name, mass, type)
+    super(name, mass)
+    @type = type
+  end
 
 end
 
-class Moon
+class Moon < Body
+
+  def initialize(name, mass, month, planet)
+    super(name, mass)
+    @month = month
+    @planet = planet
+  end
 
 end
+
+solar_system = System.new
+Planet.new("Earth", 100, 24, 365.25)
+Planet.new("Mercury", 75, 1408, 87.96)
+Planet.new("Venus", 81, 5832, 224.7)
+Planet.new("Mars", 10.7, 25, 686.971)
+Moon.new("TheMoon", 0.012, 27.3, "Earth")
+Star.new("Sun", 10100, "g")
