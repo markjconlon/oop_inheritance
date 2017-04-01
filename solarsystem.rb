@@ -62,9 +62,15 @@ class Moon < Body
 end
 
 solar_system = System.new
-Planet.new("Earth", 100, 24, 365.25)
-Planet.new("Mercury", 75, 1408, 87.96)
-Planet.new("Venus", 81, 5832, 224.7)
-Planet.new("Mars", 10.7, 25, 686.971)
-Moon.new("TheMoon", 0.012, 27.3, "Earth")
-Star.new("Sun", 10100, "g")
+earth = Planet.new("Earth", 100, 24, 365.25)
+mercury = Planet.new("Mercury", 75, 1408, 87.96)
+venus = Planet.new("Venus", 81, 5832, 224.7)
+mars = Planet.new("Mars", 10.7, 25, 686.971)
+solar_system.add(earth)
+solar_system.add(mercury)
+solar_system.add(venus)
+solar_system.add(mars)
+moon = Moon.new("TheMoon", 0.012, 27.3, earth)
+solar_system.add(moon)
+sun = Star.new("Sun", 10100, "g")
+solar_system.add(sun)
